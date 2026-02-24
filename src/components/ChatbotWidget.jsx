@@ -28,7 +28,7 @@ export default function ChatbotWidget() {
     const [messages, setMessages] = useState([
         {
             from: 'bot',
-            text: "Hi there! 👋 I'm the Elite Podiatry assistant. How can I help you today?",
+            text: "Hi there! 👋 I'm the Macarthur Podiatry Group assistant. How can I help you today?",
         },
     ]);
     const [isTyping, setIsTyping] = useState(false);
@@ -132,7 +132,7 @@ export default function ChatbotWidget() {
                                 </svg>
                             </div>
                             <div>
-                                <div className="text-sm font-bold uppercase tracking-[0.1em]">Elite Podiatry</div>
+                                <div className="text-sm font-bold uppercase tracking-[0.1em]">Macarthur Podiatry Group</div>
                                 <div className="text-[10px] uppercase tracking-[0.15em] text-gray-400 flex items-center gap-1.5">
                                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
                                     Online now
@@ -152,8 +152,8 @@ export default function ChatbotWidget() {
                                 >
                                     <div
                                         className={`max-w-[80%] px-4 py-3 text-sm leading-relaxed ${msg.from === 'user'
-                                                ? 'bg-black text-white'
-                                                : 'bg-gray-100 text-black border border-gray-200'
+                                            ? 'bg-black text-white'
+                                            : 'bg-gray-100 text-black border border-gray-200'
                                             }`}
                                     >
                                         {msg.text.split('\n').map((line, j) => (

@@ -179,7 +179,7 @@ export default function Footer() {
                 {/* Bottom bar */}
                 <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-xs font-light text-gray-500">
-                        &copy; {currentYear} Elite Podiatry. All rights reserved.
+                        &copy; {currentYear} Macarthur Podiatry Group. All rights reserved.
                     </p>
                     <div className="flex items-center gap-6 text-xs font-light text-gray-500">
                         <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

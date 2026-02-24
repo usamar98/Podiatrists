@@ -58,8 +58,8 @@ export default function Navbar() {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
                     >
-                        Elite
-                        <span className="font-light ml-1">Podiatry</span>
+                        Macarthur
+                        <span className="font-light ml-1">Podiatry Group</span>
                     </a>
 
                     {/* Desktop Navigation */}

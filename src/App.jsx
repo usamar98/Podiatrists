@@ -51,7 +51,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Elite Podiatry
+              Macarthur Podiatry Group
             </motion.span>
           </motion.div>
         )}

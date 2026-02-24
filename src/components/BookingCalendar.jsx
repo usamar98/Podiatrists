@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import MagneticButton from './MagneticButton';
 
 /**
  * BookingCalendar — Modal with an interactive calendar date picker.
  * Opens when user clicks "Book Now" / "Book Appointment".
- * Black/white Swiss design with selectable dates and time slots.
+ * Black/white Swiss design with selectable dates, time slots, and GHL form widget.
  */
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -30,7 +29,7 @@ export default function BookingCalendar({ isOpen, onClose }) {
     const [currentYear, setCurrentYear] = useState(today.getFullYear());
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
-    const [step, setStep] = useState('date'); // 'date' | 'time' | 'confirm'
+    const [step, setStep] = useState('date'); // 'date' | 'time' | 'form'
 
     const daysInMonth = getDaysInMonth(currentYear, currentMonth);
     const firstDay = getFirstDayOfMonth(currentYear, currentMonth);
@@ -76,7 +75,7 @@ export default function BookingCalendar({ isOpen, onClose }) {
 
     const handleTimeSelect = (time) => {
         setSelectedTime(time);
-        setStep('confirm');
+        setStep('form');
     };
 
     const handleReset = () => {
@@ -131,12 +130,13 @@ export default function BookingCalendar({ isOpen, onClose }) {
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="bg-white border-2 border-black w-full max-w-lg shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            className="bg-white border-2 border-black w-full max-w-lg shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden max-h-[90vh] overflow-y-auto"
                             initial={{ scale: 0.9, y: 30 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.9, y: 30 }}
                             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                             onClick={(e) => e.stopPropagation()}
+                            style={{ scrollbarWidth: 'none' }}
                         >
                             {/* Header */}
                             <div className="bg-black text-white px-6 py-5 flex items-center justify-between">
@@ -144,10 +144,10 @@ export default function BookingCalendar({ isOpen, onClose }) {
                                     <h2 className="text-lg font-bold uppercase tracking-[0.1em]">
                                         {step === 'date' && 'Select Date'}
                                         {step === 'time' && 'Select Time'}
-                                        {step === 'confirm' && 'Confirm Booking'}
+                                        {step === 'form' && 'Your Details'}
                                     </h2>
                                     <p className="text-xs text-gray-400 uppercase tracking-[0.15em] mt-1">
-                                        Elite Podiatry
+                                        Macarthur Podiatry Group
                                     </p>
                                 </div>
                                 <button
@@ -284,64 +284,48 @@ export default function BookingCalendar({ isOpen, onClose }) {
                                 </div>
                             )}
 
-                            {/* Step: Confirmation */}
-                            {step === 'confirm' && (
+                            {/* Step: GHL Form Widget */}
+                            {step === 'form' && (
                                 <div className="p-6">
                                     <button
                                         onClick={() => setStep('time')}
-                                        className="text-xs uppercase tracking-[0.15em] font-medium text-gray-400 hover:text-black transition-colors mb-6 flex items-center gap-1"
+                                        className="text-xs uppercase tracking-[0.15em] font-medium text-gray-400 hover:text-black transition-colors mb-4 flex items-center gap-1"
                                     >
                                         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                                             <path d="M10 4L6 8L10 12" />
                                         </svg>
-                                        Change time
+                                        Back to time slots
                                     </button>
 
-                                    {/* Booking Summary */}
-                                    <div className="border-2 border-black p-6 mb-6">
-                                        <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-gray-400 mb-4">
-                                            Booking Summary
-                                        </h3>
-                                        <div className="space-y-3">
-                                            <div className="flex justify-between">
-                                                <span className="text-sm text-gray-500">Date</span>
-                                                <span className="text-sm font-bold">{formatDate(selectedDate)}</span>
-                                            </div>
-                                            <div className="flex justify-between">
-                                                <span className="text-sm text-gray-500">Time</span>
-                                                <span className="text-sm font-bold">{selectedTime}</span>
-                                            </div>
-                                            <div className="flex justify-between pt-3 border-t border-gray-200">
-                                                <span className="text-sm text-gray-500">Service</span>
-                                                <span className="text-sm font-bold">Initial Consultation</span>
-                                            </div>
-                                            <div className="flex justify-between">
-                                                <span className="text-sm text-gray-500">Duration</span>
-                                                <span className="text-sm font-bold">45 minutes</span>
-                                            </div>
-                                            <div className="flex justify-between">
-                                                <span className="text-sm text-gray-500">Cost</span>
-                                                <span className="text-sm font-bold">$49 <span className="text-gray-400 line-through text-xs ml-1">$89</span></span>
-                                            </div>
+                                    {/* Booking Summary Mini */}
+                                    <div className="border border-gray-200 px-4 py-3 mb-6 flex items-center justify-between">
+                                        <div>
+                                            <p className="text-xs text-gray-400 uppercase tracking-[0.15em]">Your Appointment</p>
+                                            <p className="text-sm font-bold mt-0.5">{formatDate(selectedDate)}</p>
                                         </div>
+                                        <span className="text-sm font-bold bg-black text-white px-3 py-1.5 uppercase tracking-[0.05em]">
+                                            {selectedTime}
+                                        </span>
                                     </div>
 
-                                    <div className="flex gap-3">
-                                        <MagneticButton
-                                            variant="filled"
-                                            size="md"
-                                            className="flex-1"
-                                            onClick={handleClose}
-                                        >
-                                            Confirm Booking
-                                        </MagneticButton>
-                                        <button
-                                            onClick={handleReset}
-                                            className="px-6 py-3 text-xs uppercase tracking-[0.15em] font-semibold border border-black hover:bg-black hover:text-white transition-colors"
-                                        >
-                                            Reset
-                                        </button>
-                                    </div>
+                                    {/* GHL Form Widget */}
+                                    <iframe
+                                        src="https://api.usama.services/widget/form/Z8rdtq1lQkGmTjWdG5tp"
+                                        style={{ width: '100%', height: '100%', border: 'none', borderRadius: '3px' }}
+                                        id="inline-Z8rdtq1lQkGmTjWdG5tp"
+                                        data-layout="{'id':'INLINE'}"
+                                        data-trigger-type="alwaysShow"
+                                        data-trigger-value=""
+                                        data-activation-type="alwaysActivated"
+                                        data-activation-value=""
+                                        data-deactivation-type="neverDeactivate"
+                                        data-deactivation-value=""
+                                        data-form-name="Form 0"
+                                        data-height="544"
+                                        data-layout-iframe-id="inline-Z8rdtq1lQkGmTjWdG5tp"
+                                        data-form-id="Z8rdtq1lQkGmTjWdG5tp"
+                                        title="Form 0"
+                                    />
 
                                     <p className="text-[10px] text-gray-400 mt-4 text-center">
                                         You'll receive a confirmation SMS and email after booking.

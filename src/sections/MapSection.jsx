@@ -115,7 +115,7 @@ export default function MapSection() {
                         <ScrollReveal delay={0.2} direction="right">
                             <div className="border-2 border-black overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
                                 <iframe
-                                    title="Elite Podiatry Location"
+                                    title="Macarthur Podiatry Group Location"
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353!3d-37.8162791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sMelbourne%20VIC%203000!5e0!3m2!1sen!2sau!4v1708000000000!5m2!1sen!2sau"
                                     width="100%"
                                     height="500"

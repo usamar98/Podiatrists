@@ -79,7 +79,7 @@ export default function About() {
 
                                 <div className="space-y-6 text-lg font-light text-gray-600 leading-relaxed">
                                     <p>
-                                        At Elite Podiatry, we combine cutting-edge biomechanical analysis
+                                        At Macarthur Podiatry Group, we combine cutting-edge biomechanical analysis
                                         with compassionate, patient-centred care. Every treatment plan is
                                         personalised — because no two feet are the same.
                                     </p>

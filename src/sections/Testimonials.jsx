@@ -12,7 +12,7 @@ import ScrollReveal from '../components/ScrollReveal';
 const testimonials = [
     {
         quote:
-            "After years of plantar fasciitis, I'd given up on running. Elite Podiatry's shockwave therapy and custom orthotics changed everything — I completed my first half-marathon pain-free last month.",
+            "After years of plantar fasciitis, I'd given up on running. Macarthur Podiatry Group's shockwave therapy and custom orthotics changed everything — I completed my first half-marathon pain-free last month.",
         name: 'Sarah Mitchell',
         role: 'Marathon Runner',
         image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
@@ -36,7 +36,7 @@ const testimonials = [
     },
     {
         quote:
-            "As a Type 2 diabetic, regular foot checks are critical. Elite Podiatry gives me thorough screening every visit and caught a nerve issue early. Their preventative care is second to none.",
+            "As a Type 2 diabetic, regular foot checks are critical. Macarthur Podiatry Group gives me thorough screening every visit and caught a nerve issue early. Their preventative care is second to none.",
         name: 'Robert Chen',
         role: 'Retiree, 68',
         image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80',
@@ -52,7 +52,7 @@ const testimonials = [
     },
     {
         quote:
-            "Achilles tendinitis was ruining my football season. The tailored rehab program and dry needling at Elite Podiatry had me back on the pitch in six weeks — stronger than before.",
+            "Achilles tendinitis was ruining my football season. The tailored rehab program and dry needling at Macarthur Podiatry Group had me back on the pitch in six weeks — stronger than before.",
         name: 'Daniel Okoye',
         role: 'Semi-Pro Footballer',
         image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80',
